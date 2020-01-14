@@ -76,7 +76,7 @@ button {
   cursor: pointer;
 }
 .clear {
-  
+  display: none;
 }
 button:hover {
   background-color: rgb(170, 135, 231);
@@ -112,4 +112,8 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+.removeContent {
+  display: none;
 }

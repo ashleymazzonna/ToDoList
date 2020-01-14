@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.static("public"));
 
 var item;
-var items = ["Finish JS Course", "Finish SASS Course"];
+var homeItems = ["Finish JS Course", "Finish SASS Course"];
 var workItems = [];
 var today = new Date();
 var currentDay = today.getDay();
@@ -23,20 +23,36 @@ var options = {
     month: "long"
 };
 
-
 var day = today.toLocaleDateString("en-US", options);
 
 const clearArrs = (arr) => {
-    
+    if (arr.length > 10) {
+        arr.shift()
+    }  else {
+        arr.push(item);
+    }
 };
 
+const deleteBtn = () => {
+    let checkbox = document.querySelector('input[type="checkbox"]');
+    let clearBtn = document.querySelector('.clear');
+
+    clearBtn.addEventListener('click', function(event) {
+        if (checkbox) {
+            let item = document.querySelector('.listItem');
+            let container = item.parentNode;
+            container.removeChild(item);
+        }
+
+    });
+};
 
 app.get("/", function (req, res) {
     res.render("lists", { 
         kindOfDay: day, 
         listsType: 'Home List', 
         userName: name, 
-        newListItems: items, 
+        newListItems: homeItems, 
 
     });
 });
@@ -45,10 +61,13 @@ app.post("/", function (req, res) {
     item = req.body.newItem;
 
     if (req.body.list === "Work List") {
-        workItems.push(item);
+        clearArrs(workItems);
         res.redirect('/work');
+
+        
     } else {
-        items.push(item);
+        clearArrs(homeItems);
+        // homeItems.push(item);
         res.redirect("/");
     }
 });
@@ -65,7 +84,7 @@ app.get('/work', function(req, res) {
 // app.post('/work', function(req, res) {
 
 //     let item = req.body.newItem;
-//     workItems.push(items);
+//     workItems.push(homeItems);
 //     res.redirect('/work');
 // });
 
