@@ -2,12 +2,16 @@ html {
   background-color: #E4E9FD;
   background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
   min-height: 1000px;
-  font-family: 'helvetica neue';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-h1 {
+h1, h2 {
   color: #fff;
   padding: 10px;
+}
+
+h2 {
+  margin-top: -20px;
 }
 
 .box {
@@ -62,10 +66,25 @@ button {
   border-radius: 50%;
   border-color: transparent;
   background-color: #A683E3;
+  box-shadow: inset 1px 1px 10px rgb(184, 147, 248);
   color: #fff;
   font-size: 30px;
-  padding-bottom: 6px;
+  font-weight: lighter;
+  padding: 4px 5px;
+  margin: 1%;
   border-width: 0;
+  cursor: pointer;
+}
+.clear {
+  
+}
+button:hover {
+  background-color: rgb(170, 135, 231);
+  box-shadow: 1px 0 10px rgba(27, 27, 27, 0.3);
+  
+}
+button:active {
+  transform: translateY(3px);
 }
 
 input[type="text"] {
