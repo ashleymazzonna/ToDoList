@@ -8,10 +8,12 @@ const app = express();
 app.set('view engine', 'ejs'); //tells the app to use ejs view engine - must be placed below the app const or it will not exist yet!!1 
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.static("public"));
+app.use(bodyParser.json());
 
 var item;
 var homeItems = ["Finish JS Course", "Finish SASS Course"];
 var workItems = [];
+// var listsType = ["Home List", "Work List"];
 var today = new Date();
 var currentDay = today.getDay();
 var day = '';
@@ -39,9 +41,9 @@ const deleteBtn = () => {
 
     clearBtn.addEventListener('click', function(event) {
         if (checkbox) {
-            let item = document.querySelector('.listItem');
-            let container = item.parentNode;
-            container.removeChild(item);
+            let listItem = document.querySelector('.listItem');
+            let container = listItem.parentNode;
+            container.removeChild(listItem);
         }
 
     });
@@ -59,8 +61,9 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
     item = req.body.newItem;
-
+    console.log(item);
     if (req.body.list === "Work List") {
+
         clearArrs(workItems);
         res.redirect('/work');
 
@@ -81,12 +84,14 @@ app.get('/work', function(req, res) {
 
 });
 
-// app.post('/work', function(req, res) {
+app.post('/profile', function(req, res) {
+    console.log(req.body);
+    res.send("Success");
 
-//     let item = req.body.newItem;
-//     workItems.push(homeItems);
-//     res.redirect('/work');
-// });
+    // let item = req.body.newItem;
+    // workItems.push(homeItems);
+    // res.redirect('/work');
+});
 
 
 
