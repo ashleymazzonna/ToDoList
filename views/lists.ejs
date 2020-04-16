@@ -13,11 +13,11 @@
     <div class="box"  id="heading">
         <h1> <%= kindOfDay %> </h1> 
         <h2><%= listsType %>  </h2> 
-        <h2> Hey <%= userName %> , Check some things off your list today  !!</h2>
+        <!-- <h2> Hey <%= userName %> , Check some things off your list today  !!</h2> -->
 
     </div>
     
-    <div class="box">
+    <div class="box" >
         <h1 id="heading">To Do List</h1>
         <% for (var i = 0; i < newListItems.length; i++) {  %>
         <div class="item">
@@ -26,7 +26,7 @@
         </div>  
         <% } %> 
             <form class="item" action="/" method="post" autocomplete="off">
-                <input type="text" name="newItem" placeholder="Add New Item" autofocus>
+                <input type="text" name="newItem" placeholder="Add New Item" autofocus autocomplete="off">
         
                 <button type="submit" class="btn" name="list" value="<%= listsType %>">+</button>
                 <button type="button" class="btn clear" name="list" value="<%= listsType %>">x</button>
@@ -35,15 +35,6 @@
             </form>
           
         </div>
-
-     
-    
-
-
-
-
-
-
 
 </body>
 </html>

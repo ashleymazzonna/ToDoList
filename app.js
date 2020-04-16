@@ -2,6 +2,7 @@
 
 const express = require('./node_modules/express');
 const bodyParser = require("./node_modules/body-parser");
+const getDate = require(__dirname + "/date.js")
 
 const app = express();
 
@@ -10,22 +11,13 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
-var item;
-var homeItems = ["Finish JS Course", "Finish SASS Course"];
-var workItems = [];
-// var listsType = ["Home List", "Work List"];
-var today = new Date();
-var currentDay = today.getDay();
-var day = '';
-var name = 'Ashley';
+let item;
+let homeItems = ["Finish JS Course", "Finish SASS Course"];
+let workItems = [];
+// let listsType = ["Home List", "Work List"];
 
-var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-};
 
-var day = today.toLocaleDateString("en-US", options);
+let name = 'Ashley';
 
 const clearArrs = (arr) => {
     if (arr.length > 10) {
@@ -85,7 +77,6 @@ app.get('/work', function(req, res) {
 });
 
 app.post('/profile', function(req, res) {
-    console.log(req.body);
     res.send("Success");
 
     // let item = req.body.newItem;
